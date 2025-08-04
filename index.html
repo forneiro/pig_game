@@ -4,28 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <!-- ESTILOS -->
+      <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main>
-        <button>🔄️ New Game</button>
-        <section>
-            <h2>Player </h2>
-            <div></div>
-            <section>
+        <button class="btn new_game">🔄️ New Game</button>
+        <button class="btn roll_dice">🎲 Roll Dice</button>
+        <button class="btn hold">🕹️ Hold</button>
+        <img src="" alt="" class="dice">
+        <section class="bg-player p1 bg_active">
+            <div>
+                <h2>Player 1</h2>
+                <div class="score score1">0</div>
+            </div>
+            <section class="current">
                 <p>Current</p>
-                <div></div>
+                <div class="current_score_p1">0</div>
             </section>
         </section>
-        <section>
-            <h2>Player </h2>
-            <div></div>
-            <section>
+        <section class="bg-player p2">
+            <div>
+                <h2>Player 2</h2>
+                <div class="score score2">0</div>
+            </div>
+            <section class="current">
                 <p>Current</p>
-                <div></div>
+                <div class="current_score_p2">0</div>
             </section>
         </section>
-        <button>🎲 Roll Dice</button>
-        <button>🕹️ Hold</button>
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
