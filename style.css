@@ -62,6 +62,9 @@ h2 {
     transform: translateX(-50%);
     top: 35%;
 }
+.hidden {
+    display: none;
+}
 /* Botones */
 .new_game {
     top: 15%;
