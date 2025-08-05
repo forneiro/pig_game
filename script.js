@@ -12,18 +12,22 @@ var current_score_p1 = document.getElementById('current--0');
 var current_score_p2 = document.getElementById('current--1');
 
 // Starting conditions 
-var currentScore = 0;
-var active_player = 0;
-var scores = [0, 0]
-dice.classList.add('hidden');
-var playing = true;
-
+var active_player, currentScore, scores, playing;
+const resetValues = function() {
+    player1.classList.add('bg_active');
+    player2.classList.remove('bg_active');
+    dice.classList.add('hidden');
+    playing = true;
+    active_player = 0;
+    currentScore = 0;
+    scores = [0, 0];
+}; resetValues();
 const switchPlayer = function() {
     document.getElementById(`current--${active_player}`).textContent = 0;
-        active_player = active_player == 0 ? 1 : 0;
-        currentScore = 0;
-        player1.classList.toggle('bg_active');
-        player2.classList.toggle('bg_active');
+    active_player = active_player == 0 ? 1 : 0;
+    currentScore = 0;
+    player1.classList.toggle('bg_active');
+    player2.classList.toggle('bg_active');
 }
 
 roll_dice.addEventListener('click', function() {
@@ -58,18 +62,12 @@ hold.addEventListener('click', function() {
         }
     }
 })
+
 new_game.addEventListener('click', function() {
     document.querySelector(`.player--${active_player}`).classList.remove('player--winner');
-    dice.classList.add('hidden');
-    scores = [0, 0]
+    resetValues();
     score1.textContent = 0;
     score2.textContent = 0;
     current_score_p1.textContent = 0;
     current_score_p2.textContent = 0;
-    if (player2.classList.contains('bg_active')) {
-        player2.classList.remove('bg_active');
-        player1.classList.add('bg_active');
-    };
-    currentScore = 0;
-    playing = true;
 })
