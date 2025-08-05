@@ -1,68 +1,67 @@
 'use strict'
 var dice = document.querySelector('.dice');
-dice.classList.add('hidden');
 var roll_dice = document.querySelector('.roll_dice');
 var hold = document.querySelector('.hold');
 var new_game = document.querySelector('.new_game');
 
-var player1 = document.querySelector('.p1');
-var player2 = document.querySelector('.p2');
+var player1 = document.querySelector('.player--0');
+var player2 = document.querySelector('.player--1');
+var score1 = document.querySelector('.score0')
+var score2 = document.querySelector('.score1');
+var current_score_p1 = document.getElementById('current--0');
+var current_score_p2 = document.getElementById('current--1');
 
-var score1 = document.querySelector('.score1')
-var score2 = document.querySelector('.score2');
+// Starting conditions 
+var currentScore = 0;
+var active_player = 0;
+var scores = [0, 0]
+dice.classList.add('hidden');
+var playing = true;
 
-var current_score_p1 = document.querySelector('.current_score_p1');
-var current_score_p2 = document.querySelector('.current_score_p2');
-var suma = 0;
+const switchPlayer = function() {
+    document.getElementById(`current--${active_player}`).textContent = 0;
+        active_player = active_player == 0 ? 1 : 0;
+        currentScore = 0;
+        player1.classList.toggle('bg_active');
+        player2.classList.toggle('bg_active');
+}
 
 roll_dice.addEventListener('click', function() {
-    dice.classList.remove('hidden');
-    var numero = Math.ceil(Math.random() * 6);
-    suma += numero;
-    dice.src = `img/dice-${numero}.png`;
-    if (numero > 1) {
-        if (player1.classList.contains('bg_active')) {
-            current_score_p1.textContent = suma;
-        } else if (player2.classList.contains('bg_active')) {
-            current_score_p2.textContent = suma;
-        }
-    } else {
-        if (player1.classList.contains('bg_active')) {
-            current_score_p1.textContent = 0;
-            suma = 0;
-            player1.classList.remove('bg_active');
-            player2.classList.add('bg_active');
-        } else if (player2.classList.contains('bg_active')) {
-            current_score_p2.textContent = 0;
-            suma = 0;
-            player2.classList.remove('bg_active');
-            player1.classList.add('bg_active');
+    if (playing) {
+        // Generate a random number
+        var numero = Math.ceil(Math.random() * 6);
+    
+        // Display dice
+        dice.classList.remove('hidden');
+        dice.src = `img/dice-${numero}.png`;
+    
+        // Add values and switch player
+        currentScore += numero;
+        if (numero > 1) {
+            document.getElementById(`current--${active_player}`).textContent = currentScore;
+        } else {
+            switchPlayer();
         }
     }
 })
 hold.addEventListener('click', function() {
-    if (player1.classList.contains('bg_active')) {
-        score1.textContent = Number(score1.textContent) + suma;
-        player1.classList.remove('bg_active');
-        player2.classList.add('bg_active');
-        current_score_p1.textContent = 0;
-        suma = 0;
-    } else if (player2.classList.contains('bg_active')) {
-        score2.textContent = Number(score2.textContent) + suma;
-        player2.classList.remove('bg_active');
-        player1.classList.add('bg_active');
-        current_score_p2.textContent = 0;
-        suma = 0;
-    }
-    if (Number(score1.textContent) > 100) {
-        alert('gana el jugador 1');
-    } else if(Number(score2.textContent) > 100) {
-        alert('gana el jugador 2');;
+    if (playing) {
+        scores[active_player] += currentScore;
+        document.querySelector(`.score${active_player}`).textContent = scores[active_player];
+        if (scores[active_player] >= 20) {
+            // Set values
+            document.querySelector(`.player--${active_player}`).classList.add('player--winner');
+            playing = false;
+        } else {
+            // Switch player
+            switchPlayer();
+        }
     }
 })
-
 new_game.addEventListener('click', function() {
+    document.querySelector(`.player--${active_player}`).classList.remove('player--winner');
     dice.classList.add('hidden');
+    scores = [0, 0]
     score1.textContent = 0;
     score2.textContent = 0;
     current_score_p1.textContent = 0;
@@ -70,6 +69,7 @@ new_game.addEventListener('click', function() {
     if (player2.classList.contains('bg_active')) {
         player2.classList.remove('bg_active');
         player1.classList.add('bg_active');
-    }
-    suma = 0;
+    };
+    currentScore = 0;
+    playing = true;
 })

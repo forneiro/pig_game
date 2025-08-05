@@ -7,6 +7,7 @@
     --color_points: #c7365f;
     --color_gradient: #bf2e34;
     --color_gradient2: #753682;
+    --color_winner: #040e03;
     --white_transparent: rgba(255, 255, 255, 0.6);
     --white: #fff;
     --fuente_principal: "Nunito", sans-serif;
@@ -54,6 +55,7 @@ h2 {
 }
 .bg_active {
     background-color: var(--color_active);
+    transition: .8s ease-out;
 }
 .dice {
     position: absolute;
@@ -64,6 +66,9 @@ h2 {
 }
 .hidden {
     display: none;
+}
+.player--winner {
+    background-color: var(--color_winner);
 }
 /* Botones */
 .new_game {

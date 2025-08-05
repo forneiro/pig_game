@@ -13,24 +13,24 @@
         <button class="btn roll_dice">🎲 Roll Dice</button>
         <button class="btn hold">🕹️ Hold</button>
         <img src="" alt="dice" class="dice">
-        <section class="bg-player p1 bg_active">
+        <section class="bg-player player--0 bg_active">
             <div>
                 <h2>Player 1</h2>
+                <div class="score score0">0</div>
+            </div>
+            <section class="current">
+                <p>Current</p>
+                <div class="current_score_p1" id="current--0">0</div>
+            </section>
+        </section>
+        <section class="bg-player player--1">
+            <div>
+                <h2>Player 2</h2>
                 <div class="score score1">0</div>
             </div>
             <section class="current">
                 <p>Current</p>
-                <div class="current_score_p1">0</div>
-            </section>
-        </section>
-        <section class="bg-player p2">
-            <div>
-                <h2>Player 2</h2>
-                <div class="score score2">0</div>
-            </div>
-            <section class="current">
-                <p>Current</p>
-                <div class="current_score_p2">0</div>
+                <div class="current_score_p2" id="current--1">0</div>
             </section>
         </section>
     </main>
