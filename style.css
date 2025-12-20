@@ -1,119 +1,134 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 :root {
-    --color_text: #333;
-    --color_bg: rgba(255, 255, 255, 0.35);
-    --color_active: rgba(255, 255, 255, 0.5);
-    --color_shadow: rgba(0, 0, 0, 0.25);
-    --color_points: #c7365f;
-    --color_gradient: #bf2e34;
-    --color_gradient2: #753682;
-    --color_winner: #040e03;
-    --white_transparent: rgba(255, 255, 255, 0.6);
-    --white: #fff;
-    --fuente_principal: "Nunito", sans-serif;
+  --color_text: #333;
+  --color_bg: rgba(255, 255, 255, 0.35);
+  --color_active: rgba(255, 255, 255, 0.5);
+  --color_shadow: rgba(0, 0, 0, 0.25);
+  --color_points: #c7365f;
+  --color_gradient: #bf2e34;
+  --color_gradient2: #753682;
+  --color_winner: #040e03;
+  --white_transparent: rgba(255, 255, 255, 0.6);
+  --white: #fff;
+  --fuente_principal: "Nunito", sans-serif;
 }
 html {
-    font-size: 62.5%;
-    box-sizing: border-box;
+  font-size: 62.5%;
+  box-sizing: border-box;
 }
 * {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 body {
-    background-image: linear-gradient(to top left, var(--color_gradient2) 0%, var(--color_gradient) 100%);
-    color: var(--color_text);
-    font-family: var(--fuente_principal);
-    background-repeat: no-repeat;
-    text-align: center;
-    text-transform: uppercase;
-    height: 100vw;
-
+  background-image: linear-gradient(
+    to top left,
+    var(--color_gradient2) 0%,
+    var(--color_gradient) 100%
+  );
+  color: var(--color_text);
+  font-family: var(--fuente_principal);
+  background-repeat: no-repeat;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  padding-bottom: 10rem;
+}
+header {
+  color: var(--white);
+  margin: 4rem auto;
+  max-width: 60rem;
+  line-height: 2;
+}
+h1 {
+  font-size: 3.6rem;
 }
 h2 {
-    font-size: 4rem;
-    margin-bottom: 2rem;
+  font-size: 4rem;
+  margin-bottom: 2rem;
 }
 
 /* Utilidades */
 .btn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--white_transparent);
-    border: none;
-    cursor: pointer;
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-    text-transform: uppercase;
-    transition: .32s ease;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--white_transparent);
+  border: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  transition: 0.32s ease;
 }
 .btn:hover {
-    background-color: var(--white);
-    box-shadow: 4px 4px 10px var(--color_shadow);
+  background-color: var(--white);
+  box-shadow: 4px 4px 10px var(--color_shadow);
 }
 .bg_active {
-    background-color: var(--color_active);
-    transition: .8s ease-out;
+  background-color: var(--color_active);
+  transition: 0.8s ease-out;
 }
 .dice {
-    position: absolute;
-    max-width: 10rem;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 35%;
+  position: absolute;
+  max-width: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 35%;
 }
 .hidden {
-    display: none;
+  display: none;
 }
 .player--winner {
-    background-color: var(--color_winner);
+  background-color: var(--color_winner);
 }
 /* Botones */
 .new_game {
-    top: 15%;
+  top: 15%;
 }
 .roll_dice {
-    bottom: 25%;
+  bottom: 25%;
 }
 .hold {
-    bottom: 15%;
+  bottom: 15%;
 }
+
 /* main */
 main {
-    max-width: 100rem;
-    margin: 10rem auto;
-    position: relative;
-    display: flex;
-    height: 60rem;
-    background-color: var(--color_bg);
-    border-radius: 1rem;
+  max-width: 100rem;
+  margin: 8rem auto;
+  position: relative;
+  display: flex;
+  height: 60rem;
+  background-color: var(--color_bg);
+  border-radius: 1rem;
 }
 main section {
-    width: 50%;
+  width: 50%;
 }
 .bg-player {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8rem 0;
+  border-radius: 1rem;
 }
 
 .score {
-    color: var(--color_points);
-    font-size: 6rem;
+  color: var(--color_points);
+  font-size: 6rem;
 }
 .current {
-    background-color: var(--color_points);
-    color: var(--white);
-    padding: 2rem 6rem;
-    border-radius: .8rem;
-    width: auto;
-    font-size: 1.6rem;
+  background-color: var(--color_points);
+  color: var(--white);
+  padding: 2rem 6rem;
+  border-radius: 0.8rem;
+  width: auto;
+  font-size: 1.6rem;
 }
 .current div {
-    font-size: 3rem;
-    margin-top: 1rem;
+  font-size: 3rem;
+  margin-top: 1rem;
 }
